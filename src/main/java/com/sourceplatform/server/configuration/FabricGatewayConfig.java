@@ -59,6 +59,13 @@ public class FabricGatewayConfig {
         return network.getContract("process");
     }
 
+    /**
+     * read given user pem and pk signed by CA and put user into local wallet
+     * @return identity created by given user pem and pk
+     * @throws IOException io exception
+     * @throws CertificateException certificate invalid
+     * @throws InvalidKeyException key invalid
+     */
     private Identity getIdentity() throws IOException, CertificateException, InvalidKeyException {
         Path userPath = Paths.get(userDir);
         Path cPath = userPath.resolve(Paths.get(
