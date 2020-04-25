@@ -4,7 +4,7 @@ import com.sourceplatform.server.dataaccess.DataAccessInterface;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProcessService {
+public class ProcessService implements ProcessServiceInterface{
 
     private final DataAccessInterface dao;
 
