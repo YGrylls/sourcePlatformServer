@@ -18,9 +18,6 @@ import java.util.concurrent.TimeoutException;
 
 @Component
 public class FabricAccess implements DataAccessInterface {
-
-    private Log logger = LogFactory.getLog(FabricAccess.class);
-
     @Resource(name = "fabricContract")
     private Contract contract;
 
