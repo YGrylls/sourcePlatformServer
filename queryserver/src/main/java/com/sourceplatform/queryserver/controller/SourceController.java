@@ -10,7 +10,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hyperledger.fabric.gateway.ContractException;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +27,7 @@ public class SourceController {
         this.sourceService = sourceService;
     }
 
-    @GetMapping("/query")
+    @PostMapping("/query")
     public ResponseDTO queryProcess(@RequestBody KeyRequest key){
         if(StringUtils.isEmpty(key.getKey())){
             return ResponseUtil.errRes("KeyEmpty");
@@ -41,7 +41,7 @@ public class SourceController {
         }
     }
 
-    @GetMapping("/prev")
+    @PostMapping("/prev")
     public ResponseDTO prevProcess(@RequestBody KeyRequest key){
         if(StringUtils.isEmpty(key.getKey())){
             return ResponseUtil.errRes("KeyEmpty");
@@ -55,7 +55,7 @@ public class SourceController {
         }
     }
 
-    @GetMapping("/dig")
+    @PostMapping("/dig")
     public ResponseDTO digProcess(@RequestBody KeyRequest key){
         if(StringUtils.isEmpty(key.getKey())){
             return ResponseUtil.errRes("KeyEmpty");
