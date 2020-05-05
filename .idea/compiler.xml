@@ -6,13 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="serverSDK" />
         <module name="queryserver" />
+        <module name="serverSDK" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8">
       <module name="queryserver" target="1.8" />
-      <module name="serverSDK" target="11" />
+      <module name="serverSDK" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

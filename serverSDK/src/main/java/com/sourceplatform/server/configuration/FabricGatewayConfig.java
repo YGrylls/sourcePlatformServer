@@ -43,19 +43,20 @@ public class FabricGatewayConfig {
     @Value("${channel.name}")
     private String channelName;
 
-    private static String USERNAME = "user1";
+    @Value("${user.username}")
+    private String username;
 
     @Bean(name = "fabricContract")
     public Contract getContract() throws IOException, CertificateException, InvalidKeyException {
         Path walletDirectory =  Paths.get(walletDir);
         Wallet wallet = Wallets.newFileSystemWallet(walletDirectory);
-        Identity id = wallet.get(USERNAME);
+        Identity id = wallet.get(username);
         if (id == null){
-            wallet.put(USERNAME, getIdentity());
+            wallet.put(username, getIdentity());
         }
         Path networkConfigFile = Paths.get(configPath);
         Gateway.Builder builder = Gateway.createBuilder()
-                .identity(wallet,USERNAME)
+                .identity(wallet,username)
                 .networkConfig(networkConfigFile);
         Gateway gateway = builder.connect();
         Network network = gateway.getNetwork(channelName);
