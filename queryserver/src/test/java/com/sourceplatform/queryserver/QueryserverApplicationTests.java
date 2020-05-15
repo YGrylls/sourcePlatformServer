@@ -170,42 +170,6 @@ class QueryserverApplicationTests {
         }
     }
 
-
-    @Test
-    void testQueryPre() throws ContractException {
-        Process process = new Process();
-        process.setProcessLocalId("0003");
-        process.setStartTime(new Date().getTime());
-        process.setOptionName("销售");
-        process.setStartPosition("杨浦");
-        process.setOwnerOrg("Org1MSP");
-        process.setSpec("{\"key\":\"value\"}");
-        List<String> pre = new ArrayList<>();
-        pre.add("Org1MSP:0001");
-        process.setPreKey(pre);
-
-        String res = fabricAccess.startProcess(process);
-        Assert.isTrue("Org1MSP:0003".equals(res),"actual: "+res);
-
-        List<Process> resList1 = fabricAccess.prevProcess(res);
-        System.out.println("1 -- "+ resList1);
-        Assert.isTrue(resList1.size() == 1, "Prev check 1 failed");
-
-        fabricAccess.addLinkedProcess(res, Collections.singletonList("Org1MSP:0002"));
-        List<Process> resList2 = fabricAccess.prevProcess(res);
-        System.out.println("2 -- "+ resList2);
-        Assert.isTrue(resList2.size() == 2, "Prev check 2 failed");
-
-        fabricAccess.linkProcess(res, Collections.singletonList("Org1MSP:0002"));
-        List<Process> resList3 = fabricAccess.prevProcess(res);
-        System.out.println("3 -- "+ resList3);
-        Assert.isTrue(resList3.size() == 1, "Prev check 3 failed");
-
-        List<Process> resList4 = fabricAccess.digProcess(res,10);
-        System.out.println("4 -- "+ resList4);
-        Assert.isTrue(resList4.size() == 2, "Prev check 4 failed");
-    }
-
     @Test
     void testStartProcess4() throws ContractException {
         Process process = new Process();
